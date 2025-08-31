@@ -1,0 +1,20 @@
+Comandi utili
+
+Vedere i container in esecuzione
+
+docker ps
+
+
+Stopparli
+
+docker compose down
+
+
+Stopparli e cancellare i dati DB
+
+docker compose down -v
+
+
+Riaprirli
+
+docker compose up -d

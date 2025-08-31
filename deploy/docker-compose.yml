@@ -1,0 +1,46 @@
+version: "3.9"
+
+services:
+  db:
+    image: mysql:8
+    container_name: pms_db
+    restart: unless-stopped
+    environment:
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+      MYSQL_DATABASE: ${MYSQL_DATABASE}
+      MYSQL_USER: ${MYSQL_USER}
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+    ports:
+      - "${DB_PORT_HOST}:3306"
+    volumes:
+      - ../database/sql:/docker-entrypoint-initdb.d:ro
+      - dbdata:/var/lib/mysql
+    networks: [prezzo-net]
+
+  web:
+    build:
+      context: ..
+      dockerfile: deploy/server.Dockerfile
+    container_name: pms_web
+    restart: unless-stopped
+    environment:
+      APP_ENV: ${APP_ENV}
+      DB_HOST: ${DB_HOST}
+      DB_PORT: ${DB_PORT}
+      DB_NAME: ${DB_NAME}
+      DB_USER: ${DB_USER}
+      DB_PASS: ${DB_PASS}
+    ports:
+      - "${WEB_PORT}:80"
+    volumes:
+      - ../server/public:/var/www/html
+      - ../server/src:/var/www/src
+    depends_on:
+      - db
+    networks: [prezzo-net]
+
+networks:
+  prezzo-net:
+
+volumes:
+  dbdata:
