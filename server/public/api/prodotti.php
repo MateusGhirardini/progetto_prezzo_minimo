@@ -16,12 +16,14 @@ switch ($method) {
   case 'POST':
     // Solo azienda/admin (in dev non blocchiamo, vedi auth.php)
     require_role(['azienda','admin']);
+    check_csrf_or_fail();
     crea_prodotto();
     break;
 
   case 'PUT':
   case 'PATCH':
     require_role(['azienda','admin']);
+    check_csrf_or_fail();
     $id = get_query_int('id', null);
     if ($id === null) {
       json_error(400, 'VALIDATION_ERROR', "Manca l'id prodotto nell'URL (/api/prodotti/{id})");

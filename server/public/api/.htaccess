@@ -2,3 +2,27 @@ RewriteEngine On
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteRule ^prodotti/?$ prodotti.php [QSA,L]
 RewriteRule ^prodotti/([0-9]+)/?$ prodotti.php?id=$1 [QSA,L]
+
+# Prezzi
+RewriteRule ^prezzi/?$ prezzi.php [QSA,L]
+
+# Offerte
+RewriteRule ^offerte/?$ offerte.php [QSA,L]
+
+RewriteEngine On
+RewriteCond %{REQUEST_FILENAME} !-f
+
+# Prodotti (già aggiunte nei giorni scorsi)
+RewriteRule ^prodotti/?$ prodotti.php [QSA,L]
+RewriteRule ^prodotti/([0-9]+)/?$ prodotti.php?id=$1 [QSA,L]
+
+# Prezzi e Offerte (già aggiunte)
+RewriteRule ^prezzi/?$ prezzi.php [QSA,L]
+RewriteRule ^offerte/?$ offerte.php [QSA,L]
+
+# Auth
+RewriteRule ^auth/register/?$ auth.php [QSA,L]
+RewriteRule ^auth/login/?$    auth.php [QSA,L]
+RewriteRule ^auth/logout/?$   auth.php [QSA,L]
+RewriteRule ^auth/csrf/?$     auth.php [QSA,L]
+RewriteRule ^auth/me/?$       auth.php [QSA,L]

@@ -48,3 +48,29 @@ function v_int(array &$data, string $key, bool $required=false, string $label=nu
   $data[$key] = (int)$data[$key];
   return $data[$key];
 }
+
+function v_date(array &$data, string $key, bool $required=false, string $label=null): ?string {
+  $label = $label ?? $key;
+  if (!isset($data[$key]) || $data[$key]==='' || $data[$key]===null) {
+    if ($required) throw new InvalidArgumentException("$label è obbligatorio");
+    return null;
+  }
+  $val = trim((string)$data[$key]);
+  if (!preg_match('/^\d{4}-\d{2}-\d{2}$/', $val)) {
+    throw new InvalidArgumentException("$label deve essere in formato YYYY-MM-DD");
+  }
+  return $val;
+}
+
+function v_float(array &$data, string $key, bool $required=false, string $label=null): ?float {
+  $label = $label ?? $key;
+  if (!isset($data[$key]) || $data[$key]==='' || $data[$key]===null) {
+    if ($required) throw new InvalidArgumentException("$label è obbligatorio");
+    return null;
+  }
+  if (!is_numeric($data[$key])) throw new InvalidArgumentException("$label deve essere numerico");
+  $data[$key] = (float)$data[$key];
+  if ($data[$key] <= 0) throw new InvalidArgumentException("$label deve essere positivo");
+  return $data[$key];
+}
+
