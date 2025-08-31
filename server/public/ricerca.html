@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="it">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Ricerca • Prezzo Minimo</title>
+  <link rel="stylesheet" href="/assets/css/main.css" />
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js" defer></script>
+  <script src="/assets/js/app.js" defer></script>
+  <script src="/assets/js/ricerca.js" defer></script>
+</head>
+<body>
+  <header class="site-header">
+    <div class="container">
+      <div class="brand">
+        <span class="logo">🛒</span>
+        <h1>Prezzo Minimo Supermercati</h1>
+      </div>
+      <nav class="main-nav">
+        <a class="navlink" href="/">Home</a>
+        <a class="navlink active" href="/ricerca.html">Ricerca</a>
+        <a class="navlink" href="/offerte.html">Offerte</a>
+        <a class="navlink" href="/watchlist.html">Watchlist</a>
+        <a class="navlink" href="/login.html">Login</a>
+      </nav>
+      <div class="status">
+        <span id="api-status" class="badge badge-muted">API…</span>
+      </div>
+    </div>
+  </header>
+
+  <main class="site-main">
+    <div class="container">
+      <h2>Ricerca prodotto</h2>
+
+      <form id="search-form" class="search-bar" onsubmit="return false;">
+        <input id="q" type="search" placeholder="Cerca per nome o marca… (es. pasta barilla)" autocomplete="off" />
+        <select id="sort">
+          <option value="nome_asc">Nome ↑</option>
+          <option value="nome_desc">Nome ↓</option>
+          <option value="marca_asc">Marca ↑</option>
+          <option value="marca_desc">Marca ↓</option>
+          <option value="ean_asc">EAN ↑</option>
+          <option value="ean_desc">EAN ↓</option>
+        </select>
+        <select id="page_size" title="Risultati per pagina">
+          <option value="10">10</option>
+          <option value="20" selected>20</option>
+          <option value="50">50</option>
+        </select>
+        <button id="btn-search" class="btn">Cerca</button>
+      </form>
+
+      <div id="results-panel" class="panel">
+        <div class="panel-head">
+          <div>
+            <span id="result-count" class="muted">—</span>
+          </div>
+          <div class="pager">
+            <button id="prev" class="btn btn-secondary" disabled>«</button>
+            <span id="page-indicator" class="muted">pag. 1</span>
+            <button id="next" class="btn btn-secondary" disabled>»</button>
+          </div>
+        </div>
+
+        <div id="loading" class="loading" hidden>Caricamento…</div>
+        <div id="error" class="error" hidden>Errore nel caricamento.</div>
+
+        <table id="results" class="table">
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Nome</th>
+              <th>Marca</th>
+              <th>EAN</th>
+              <th>Foto</th>
+            </tr>
+          </thead>
+          <tbody>
+            <!-- righe renderizzate via JS -->
+          </tbody>
+        </table>
+
+        <div id="empty" class="empty muted" hidden>Nessun risultato trovato.</div>
+      </div>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <span>© 2025 Prezzo Minimo Supermercati</span>
+      <span class="sep">•</span>
+      <a href="/documentazione/">Documentazione</a>
+    </div>
+  </footer>
+</body>
+</html>
