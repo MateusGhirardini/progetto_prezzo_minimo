@@ -1,5 +1,5 @@
 # Progettazione Tecnica — Progetto “Prezzo Minimo Supermercati”
-Versione: v1.0 • Data: {{31/08/2025}} • Autore: {{Mateus Ghirardini}
+Versione: v1.0 • Data: {{31/08/2025}} • Autore: {Mateus Ghirardini}
 
 ## 1. Scopo e contesto
 Questo documento descrive la progettazione tecnica dell’applicazione:
@@ -66,9 +66,8 @@ Riferimento completo: `documentazione/api/REST_Spec.md` (Giorno 14).
 **Errori standard JSON**
 ```json
 { "error": { "code": "VALIDATION_ERROR", "message": "Campo mancante: prodotto_id", "details": { "campo": "prodotto_id" } } }
-
+```
 ---
-
 ## 5. Sicurezza
 
 ### Autenticazione (sessione PHP)
@@ -146,6 +145,8 @@ function json_error($http, $code, $msg, $details=[]) {
   echo json_encode(['error'=>['code'=>$code,'message'=>$msg,'details'=>$details]]);
   exit;
 }
+```
+```bash
 ---
 
 ##9. Struttura delle directory (server/client)
@@ -185,6 +186,7 @@ progetto_prezzo_minimo/
 └─ deploy/
    ├─ docker-compose.yml
    └─ server.Dockerfile
+   ```
 
 ## 10. Piano test (riferimento)
 
@@ -244,8 +246,9 @@ function get_pdo() {
   ];
   return new PDO($dsn, $user, $pass, $opt);
 }
-
+```
 Header JSON & CORS minimo (per test locale)
+```php
 header('Content-Type: application/json; charset=utf-8');
 // Solo per test locali:
 // header('Access-Control-Allow-Origin: http://localhost:8080');

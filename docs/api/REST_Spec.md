@@ -2,7 +2,7 @@
 
 Versione: v1.0  
 Data: 2025-08-21  
-Autore: [Il tuo nome]
+Autore: [Mateus Ghirardini]
 
 ---
 
@@ -29,73 +29,80 @@ Lo scopo è garantire una comunicazione standard tra client e server, rispettand
 
 ### 3.1 Prodotti
 - **GET /api/prodotti**  
-  Ritorna lista di tutti i prodotti.  
+  Ritorna lista di tutti i prodotti.
   **Risposta**:
   ```json
   [
     { "id": 1, "nome": "Latte", "marca": "Parmalat" },
     { "id": 2, "nome": "Pasta", "marca": "Barilla" }
   ]
-  
-  **GET /api/prodotti/{id}
+
+  ```
+  **GET /api/prodotti/{id}**
   Dettagli di un singolo prodotto.
   
-  **POST /api/prodotti
+  **POST /api/prodotti**
   Crea un nuovo prodotto.
   Input:
 
   { "nome": "Olio", "marca": "De Cecco", "dettagli": "1L" }
 
-  **PUT /api/prodotti/{id}
+  **PUT /api/prodotti/{id}**
   Aggiorna un prodotto esistente.
 
-  **DELETE /api/prodotti/{id}
+  **DELETE /api/prodotti/{id}**
   (solo Admin/Azienda) Elimina un prodotto.
 
 ### 3.2 Prezzi
 
-  **GET /api/prezzi?prodotto=ID
+  **GET /api/prezzi?prodotto=ID**
   Ritorna prezzi per un prodotto con ultimo aggiornamento.
 
-  **POST /api/prezzi
+  **POST /api/prezzi**
   Inserisce un nuovo prezzo.
   Input:
-
+  ```json
   { "id_prodotto": 1, "id_punto_vendita": 2, "prezzo": 1.49, "validita": "2025-09-01" }
+  ```
+---
+### 3.3 Offerte
 
-###3.3 Offerte
-
-  **POST /api/offerte
+  **POST /api/offerte**
   Inserisce un volantino con più prodotti.
 
-  **GET /api/offerte
+  **GET /api/offerte**
   Lista di tutte le offerte attive.
 
-###3.4 Utenti
+---
+### 3.4 Utenti
 
-  **POST /api/utenti/register
+  **POST /api/utenti/register**
   Registra un nuovo utente.
 
-  **POST /api/utenti/login
+  **POST /api/utenti/login**
   Esegue login e restituisce sessione.
 
-  **POST /api/utenti/logout
+  **POST /api/utenti/logout**
   Termina la sessione attiva.
 
-###3.5 Watchlist
+---
 
-  **GET /api/watchlist
+### 3.5 Watchlist
+
+  **GET /api/watchlist**
   Recupera lista prodotti preferiti dell’utente loggato.
 
-  **POST /api/watchlist
+  **POST /api/watchlist**
   Aggiunge prodotto alla lista desideri.
 
-  **DELETE /api/watchlist/{id_prodotto}
+  **DELETE /api/watchlist/{id_prodotto}**
   Rimuove prodotto dalla lista.
 
-###3.6 Notifiche
+---
 
-  **GET /api/notifiche
+### 3.6 Notifiche
+
+  **GET /api/notifiche**
   Ritorna notifiche attive per l’utente.
 
 ---
