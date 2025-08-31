@@ -67,3 +67,21 @@ a:hover{text-decoration:underline}
 .empty{color:var(--muted)}
 .thumb{width:44px; height:44px; object-fit:cover; border-radius:8px; border:1px solid #1f2330}
 
+/* Form offerte */
+.form-grid{
+  display:grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap:12px; padding:14px;
+}
+.form-row{display:flex; flex-direction:column; gap:6px}
+.form-row-full{grid-column:1/-1}
+.form-grid input[type="text"],
+.form-grid input[type="number"],
+.form-grid input[type="date"]{
+  padding:10px 12px; border-radius:10px; border:1px solid #1f2330; background:#0f1422; color:var(--text);
+}
+.form-actions{grid-column:1/-1; display:flex; align-items:center; gap:12px; margin-top:6px}
+.table.compact th,.table.compact td{padding:8px 10px}
+.btn-danger{background: #642a2a}
+.btn-danger:hover{opacity:.9}
+

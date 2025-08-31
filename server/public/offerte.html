@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="it">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Offerte • Prezzo Minimo</title>
+  <link rel="stylesheet" href="/assets/css/main.css" />
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js" defer></script>
+  <script src="/assets/js/app.js" defer></script>
+  <script src="/assets/js/offerte.js" defer></script>
+</head>
+<body>
+  <header class="site-header">
+    <div class="container">
+      <div class="brand">
+        <span class="logo">🛒</span>
+        <h1>Prezzo Minimo Supermercati</h1>
+      </div>
+      <nav class="main-nav">
+        <a class="navlink" href="/">Home</a>
+        <a class="navlink" href="/ricerca.html">Ricerca</a>
+        <a class="navlink active" href="/offerte.html">Offerte</a>
+        <a class="navlink" href="/watchlist.html">Watchlist</a>
+        <a class="navlink" href="/login.html">Login</a>
+      </nav>
+      <div class="status">
+        <span id="api-status" class="badge badge-muted">API…</span>
+      </div>
+    </div>
+  </header>
+
+  <main class="site-main">
+    <div class="container">
+      <h2>Offerte</h2>
+
+      <!-- LISTA OFFERTE -->
+      <section class="panel">
+        <div class="panel-head">
+          <h3 style="margin:0">Elenco offerte recenti</h3>
+          <button id="btn-refresh" class="btn btn-secondary">Aggiorna</button>
+        </div>
+        <div id="offerte-loading" class="loading" hidden>Caricamento…</div>
+        <div id="offerte-error" class="error" hidden>Errore nel caricamento delle offerte.</div>
+
+        <table id="offerte-table" class="table">
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Punto vendita</th>
+              <th>Periodo</th>
+              <th>#Prodotti</th>
+            </tr>
+          </thead>
+          <tbody>
+            <!-- righe via JS -->
+          </tbody>
+        </table>
+
+        <div id="offerte-empty" class="empty muted" hidden>Nessuna offerta trovata.</div>
+      </section>
+
+      <!-- CREAZIONE OFFERTA -->
+      <section class="panel" style="margin-top:18px">
+        <div class="panel-head">
+          <h3 style="margin:0">Crea nuovo volantino</h3>
+        </div>
+
+        <form id="offerta-form" class="form-grid" onsubmit="return false;">
+          <div class="form-row">
+            <label for="pv">ID Punto Vendita</label>
+            <input id="pv" type="number" min="1" required placeholder="es. 1">
+          </div>
+          <div class="form-row">
+            <label for="data_inizio">Data inizio</label>
+            <input id="data_inizio" type="date" required>
+          </div>
+          <div class="form-row">
+            <label for="data_fine">Data fine</label>
+            <input id="data_fine" type="date" required>
+          </div>
+
+          <div class="form-row-full">
+            <h4>Righe prodotto</h4>
+            <table class="table compact" id="righe-table">
+              <thead>
+                <tr>
+                  <th style="width:120px">ID Prodotto</th>
+                  <th style="width:140px">Prezzo</th>
+                  <th style="width:80px"></th>
+                </tr>
+              </thead>
+              <tbody id="righe-body">
+                <!-- righe via JS -->
+              </tbody>
+            </table>
+            <button id="add-riga" class="btn btn-secondary" type="button">+ Aggiungi riga</button>
+          </div>
+
+          <div class="form-actions">
+            <button id="submit-offerta" class="btn" type="submit">Crea offerta</button>
+            <span id="submit-status" class="muted"></span>
+          </div>
+        </form>
+      </section>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <span>© 2025 Prezzo Minimo Supermercati</span>
+      <span class="sep">•</span>
+      <a href="/documentazione/">Documentazione</a>
+    </div>
+  </footer>
+</body>
+</html>
